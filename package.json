@@ -1,7 +1,7 @@
 {
-  "name": "makerbot",
+  "name": "b12",
   "version": "1.0.0",
-  "description": "stateful express server",
+  "description": "carousel example",
   "main": "index.js",
   "scripts": {
     "test": "npm test",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adjavaherian/makerbot.git"
+    "url": "https://github.com/adjavaherian/b12"
   },
   "author": "@adjavaherian",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/adjavaherian/makerbot/issues"
+    "url": "https://github.com/adjavaherian/b12/issues"
   },
-  "homepage": "https://github.com/adjavaherian/makerbot#readme",
+  "homepage": "https://github.com/adjavaherian/b12#readme",
   "dependencies": {
     "express": "^4.14.0"
   }

@@ -9,38 +9,91 @@
   body {
     font-size: 2rem;
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     min-height: 100vh;
     align-items: flex-start;
-    margin-top: 10px;
   }
 
-  div {
-      margin-bottom: 20px;
+  .container {
+      background: aliceblue;
+      position:absolute;
+      padding:0;
+      margin:0;
+
+      top:0;
+      left:0;
+
+      width: 100%;
+      height: 100%;
   }
 
-  input {
-    width: 15rem;
-    height: 1rem;
-
-    border-radius: 4px;
-    position: relative;
-    padding:2rem;
-    box-shadow:
-      0 0 0 2px rgba(0,0,0,0.1)
+  .carousel {
+      height: 384px;
   }
 
-  button {
-      width: 15rem;
-      height: 5rem;
-      border-radius: 4px;
-      background: white;
+  .image {
+      height: 384px;
+      background:#018DED;
+      z-index: -99;
+
   }
 
-  input, button {
-      font-size: 14px;
+  .left, .right {
+      display: block;
+      background: black;
+      width: 100px;
+      position: absolute;
+      top: 0;
+      height: 384px;
+      opacity: 0.5;
+      z-index: 1;
   }
 
-  .reset {
-      font-size: 12px;
+  .left {
+      left: 0;
   }
+
+  .right {
+      right: 0;
+  }
+
+  .dots {
+      display: block;
+      background: green;
+      width: 100%;
+      position: relative;
+      bottom: 5vh;
+      height: 5vh;
+      opacity: 0.5;
+  }
+
+  .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 10px;
+      background: purple;
+      border-radius: 50px;
+  }
+
+  .arrow-right {
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: 60px solid transparent;
+      border-bottom: 60px solid transparent;
+
+      border-left: 60px solid green;
+      transform: translateY(100px);
+    }
+
+    .arrow-left {
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: 60px solid transparent;
+      border-bottom: 60px solid transparent;
+      border-right:60px solid blue;
+
+      transform: translate(39px, 100px);
+    }

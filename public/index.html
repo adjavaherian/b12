@@ -2,21 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Page 1</title>
+  <title>Carousel</title>
   <link href="style.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.1/babel.min.js"></script>
 </head>
 <body>
 
-    <div>
-        <span class="greeting" data-type="formal"></span>
-    </div>
-    <div>
-        <input type="text" name="first" data-next="page2" placeholder="first name"/>
-        <button onclick=buttonClick('first')>Submit</button>
-    </div>
-
-    <div><a class="reset" onclick=reset()>reset</a></div>
-  <script src="app.js"></script>
+    <div class="container" />
+    <script type="text/babel" src="app.js"></script>
 
 </body>
 </html>

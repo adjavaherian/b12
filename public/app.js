@@ -1,56 +1,80 @@
 // app.js
 
-// storage handle
-const myStorage = localStorage;
+class Carousel extends React.Component {
 
-// set greeting
-function setGreeting() {
+  constructor(props) {
 
-    const greeting = document.querySelector('.greeting');
-    const formality = greeting.dataset.type === 'formal' ? 'Greetings' : 'Hello';
-    const first = getStorage('first') || '';
-    const last = getStorage('last') || '';
-
-    if (localStorage.getItem('first') !== null) {
-        greeting.textContent  = `${formality} ${first} ${last}`;
-    }
-}
-
-// button function
-function buttonClick(key) {
-
-    const myInput = document.querySelector(`input[name=${key}]`);
-    const inputValue = myInput.value;
-    const nextPage = myInput.dataset.next;
-
-    setStorage(key, inputValue);
-    document.location = nextPage;
-}
-
-// storage helpers
-function setStorage(key, value) {
-    myStorage.setItem(key, value);
-}
-
-function getStorage(key) {
-    return myStorage.getItem(key);
-}
-
-// reset
-function reset() {
-    myStorage.removeItem('first');
-    myStorage.removeItem('last');
-    document.location = '/';
-}
-
-// input enter key helper
-if (document.querySelector('input')) {
-    document.querySelector('input').onkeydown = function(e) {
-        if(e.keyCode == 13) {
-            buttonClick(this.name);
-        }
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+        items: [
+            'http://unsplash.it/512/384?image=1081',
+            'https://unsplash.it/512/384?image=1082',
+            'https://unsplash.it/512/384?image=1083'
+        ],
+        active: 0
     };
+
+  }
+
+  render() {
+    return (
+      <div className="carousel">
+          <Image
+              src={this.state.items[this.state.active]}
+          />
+         <div className="left" onClick={() => this.handleChange(this.state.active - 1)} >
+             <span className="arrow-left" />
+         </div>
+         <div className="right" onClick={() => this.handleChange(this.state.active + 1)} >
+             <span className="arrow-right" />
+         </div>
+         <Dots
+             items={this.state.items}
+             handler={this.handleChange}
+         />
+      </div>
+    );
+  }
+
+  handleChange(index) {
+
+    if (index === -1) {
+        this.setState({
+            active: (this.state.items.length - 1)
+        });
+    } else if (index === this.state.items.length) {
+        this.setState({
+            active: 0
+        });
+    } else {
+        this.setState({
+            active: index
+        })
+    }
+
+  }
+
 }
 
-// init with greeting
-setGreeting();
+const Image = props => {
+    return (
+        <div className="image">
+            <img src={props.src} className="slide-left" />
+        </div>
+    );
+}
+
+const Dots = props => {
+    return (
+        <div className="dots" >
+            {
+                props.items.map((dot, key) => {
+                    return (<span onClick={() => props.handler(key)} className="dot" key={key} />)
+                })
+            }
+        </div>
+    )
+}
+
+ReactDOM.render(<Carousel />, document.querySelector('.container'));
